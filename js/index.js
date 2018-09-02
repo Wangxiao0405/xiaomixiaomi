@@ -14,6 +14,28 @@ window.onload=function () {
         cart.style.boxShadow="none";
     };
 //    头部选项卡结束
+    //nav选项卡开始
+    let nav=document.querySelector(".nav")
+    let navlis=document.querySelectorAll(".nav .big .bigli")
+    let small=document.querySelector(".nav .small")
+    let small1=document.querySelectorAll(".nav .big .small1")
+    console.log(nav,navlis,small,small1);
+    nav.onmouseenter=function () {
+        small.style.display="block";
+    };
+    nav.onmouseleave=function () {
+        small.style.display="none";
+    }
+    for (let i=0;i<navlis.length;i++) {
+        navlis[i].onmouseenter=function () {
+            small1[i].style.display="block";
+        };
+        navlis[i].onmouseleave=function () {
+            small1[i].style.display="none";
+        };
+    }
+
+   //nav选项卡结束
 //    aside选项卡开始
     let aside=document.getElementsByClassName("aside");
     let lis=aside[0].getElementsByClassName("bigli");
@@ -31,7 +53,7 @@ window.onload=function () {
         }
     }
 
-    console.log(aside,lis, asideBox);
+    // console.log(aside,lis, asideBox);
 
     //家电选项卡开始
     let household=document.getElementsByClassName("household")[0];
@@ -56,7 +78,7 @@ window.onload=function () {
     function xxK() {
         let spans=more.getElementsByTagName("span");
         let right=household.getElementsByClassName("right");
-        console.log(household,more,spans,right);
+        // console.log(household,more,spans,right);
 
         for(let i=0;i<spans.length;i++){
             spans[i].onmouseenter=function () {
@@ -235,4 +257,54 @@ window.onload=function () {
         })
 
     }
+    //为你推荐选项卡
+    let recombottom=document.querySelector(".recom .bottom");
+    let btnleft=document.querySelector(".recom .right_left");
+    let btnright=document.querySelector(".recom .right_right");
+    let widths=parseInt(getComputedStyle(recombottom,null).width)/4;
+    console.log(recombottom, btnleft, btnright,widths);
+    let times=0;
+    btnright.onclick=function () {
+        times++;
+        if (times==4) {
+            times=3
+        }
+        recombottom.style.transform="translateX("+(-widths*times)+"px)";
+    };
+    btnleft.onclick=function () {
+        times--;
+
+        if (times==-1) {
+            times=0
+        }
+        recombottom.style.transform="translateX("+(-widths*times)+"px)";
+    };
+    //小米闪购选项卡
+    let moves=document.querySelector(".shopping_list .right");
+    let Btnleft=document.querySelector(".shopping_top .right_left");
+    let Btnright=document.querySelector(".shopping_top .right_right");
+    let moveswidth=parseInt(getComputedStyle(moves,null).width)/9;
+    console.log(moves,Btnleft,Btnright,moveswidth);
+    let time=0;
+    Btnright.onclick=function () {
+        time++;
+        console.log(time);
+        if (time==2) {
+            time=1
+        }
+        // if (time==1) {
+        //     moves.style.transform="translateX("+(-moveswidth*time*4)+"px)";
+        // }else if (time==2) {
+        //     moves.style.transform="translateX("+(-moveswidth*time*1)+"px)";
+        // }
+        moves.style.transform="translateX("+(-moveswidth*time*4)+"px)";
+    };
+    Btnleft.onclick=function () {
+        time--;
+        console.log(time);
+        if (time==-1) {
+            time=0
+        }
+        moves.style.transform="translate("+(-moveswidth*time*4)+"px)";
+    };
 }
