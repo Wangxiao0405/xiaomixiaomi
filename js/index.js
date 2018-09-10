@@ -289,22 +289,34 @@ window.onload=function () {
     Btnright.onclick=function () {
         time++;
         console.log(time);
-        if (time==2) {
-            time=1
+        if (time>=3) {
+            time=2
         }
-        // if (time==1) {
-        //     moves.style.transform="translateX("+(-moveswidth*time*4)+"px)";
-        // }else if (time==2) {
-        //     moves.style.transform="translateX("+(-moveswidth*time*1)+"px)";
-        // }
-        moves.style.transform="translateX("+(-moveswidth*time*4)+"px)";
+        if (time==1) {
+            moves.style.transform="translateX("+(-moveswidth*time*4)+"px)";
+        }else if (time==2) {
+            moves.style.transform="translateX("+(-moveswidth*5)+"px)";
+        }
+
     };
     Btnleft.onclick=function () {
         time--;
         console.log(time);
-        if (time==-1) {
+        if (time<=-1) {
             time=0
         }
-        moves.style.transform="translate("+(-moveswidth*time*4)+"px)";
+        if (time==1) {
+            moves.style.transform="translateX("+(-moveswidth*time*1)+"px)";
+        }else if (time==0) {
+            moves.style.transform="translateX(0px)";
+        }
     };
+
+    //返回顶部
+    let back=document.querySelector(".fixed .li4")
+    console.log(back);
+    back.onclick=function () {
+        animate(document.body,{scrollTop:0});
+        animate(document.documentElement,{scrollTop:0})
+    }
 }
